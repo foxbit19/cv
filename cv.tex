@@ -22,7 +22,7 @@
 \usepackage[absolute,overlay]{textpos}
 \usepackage{fontspec}
 \usepackage{titlesec}
-\usepackage{pstricks}
+\usepackage{pstricks,pst-node}
 \usepackage{amssymb}
 \usepackage{paralist}
 
@@ -39,7 +39,7 @@
 \newcommand{\amount}{5.7in}
 \setcounter{section}{-1}
 
-\linespread{1.2}
+\linespread{1.3}
 \pagenumbering{gobble}
 
 \renewcommand{\labelitemi}{$\blacksquare$}
@@ -82,7 +82,7 @@
             \color{dark}
             \ralewaysb{#1}
         }
-        \vspace{.2em}
+        %\vspace{.2em}
     \end{center}
 }
 
@@ -103,12 +103,12 @@
 \setlength{\parindent}{0mm}
 
 \newcommand{\contactline}[2]{
-    \ralewaysb{#1} & \raleway{#2}
+    #1 & \raleway{#2}
 }
 
 \newcommand{\skill}[2]{
-    \vspace{.2em}
-    \ralewayb{#1}
+    \vspace{.1em}
+    \ralewaym{#1}
 
     \psset{xunit=0.197\linewidth, yunit=5pt}
     \begin{pspicture}[showgrid=false](5,1)
@@ -121,12 +121,20 @@
     \end{pspicture}
 }
 
+\newcommand{\skillCircle}[2]{
+    \begin{pspicture}(2,2)
+	    \cnodeput[linecolor=mygray](1,1){E}{\ralewayb{#1}}
+    	\pscircle[linecolor=skillbg,linewidth=2pt](1,1){1}
+    	\psarc[linecolor=dark,linewidth=2pt](1,1){0.97}{90}{#2}
+    \end{pspicture}
+}
+
 \newcommand{\block}[3]{
     {\large\ralewayb #1}
 
-    \ralewaym{\color{lightdark}#2}
+	{\small\ralewaym{\color{lightdark}#2}}
 
-    \raleway{#3}
+	{\small\raleway{#3}}
 }
 
 \begin{document}
@@ -140,7 +148,7 @@
 % Side Bar
 
 \begin{textblock}{58.5}(6,7.7)
-    \name{Zeyi}{Fan}
+    \name{Firstname}{Lastname}
 
     %\tagline{Student \& Developer}
 
@@ -148,18 +156,18 @@
 
     \color{dark}
 
-    Zeyi is a college student at San Jos\'{e} State University majoring in computer science. He is a passionate and self-taught programmer with experience in both front-end and back-end development. He is always thrilled to learn new technologies and use them into work.
+    Insert here a description of yourself. Who you are?
 
     \section{Contacts}
 
     \renewcommand{\arraystretch}{1.1}
 
     \begin{tabular}{rl}
-        \contactline{Phone}{(408) 618-9708} \\
-        \contactline{Email}{i@zr.is} \\
-        \contactline{Website}{\href{https://zr.is}{zr.is}} \\
-        \contactline{GitHub}{\href{https://github.com/fanzeyi}{@fanzeyi}} \\
-        \contactline{LinkedIn}{\href{https://linkedin.com/in/fanzeyi}{/in/fanzeyi}}
+        \contactline{Phone}{123456789} \\
+        \contactline{Email}{your@beautiful.email} \\
+        \contactline{Website}{\href{https://your.site}{your.site}} \\
+        \contactline{GitHub}{\href{https://github.com/your-github}{@your-github}} \\
+        \contactline{LinkedIn}{\href{https://linkedin.com/in/your-linkedin}{/in/your-linkedin}}
     \end{tabular}
 
     \section{Skills}
@@ -176,21 +184,22 @@
 
     \skill{Git}{4}
 
-    \skill{\TeX}{4}
-
     \skill{Scala}{4}
 
     \skill{Linux}{3}
 
     \skill{Nginx}{3}
 
-    \skill{VimL}{3}
-
     \skill{PHP}{3}
 
     \skill{Ruby}{2.5}
 
-    \skill{Haskell}{2}
+    \section{Languages}
+    	\vspace{20pt}
+		\begin{tabular}{rl}
+			\skillCircle{italian}{450} 
+			\skillCircle{english}{210}
+		\end{tabular}
 
 \end{textblock}
 
